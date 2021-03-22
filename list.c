@@ -22,7 +22,7 @@ struct list
     struct node *head;
 };
 
-struct node* list_search(struct list *L, int key)
+struct node *list_search(struct list *L, int key)
 {
     // TODO
     return NULL;
