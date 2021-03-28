@@ -14,6 +14,7 @@ struct node
     struct node *prev;
     struct node *next;
     int key;
+
 };
 
 // list's beginning is called the head of list
@@ -24,18 +25,38 @@ struct list
 
 struct node *list_search(struct list *L, int key)
 {
-    // TODO
-    return NULL;
+    struct node* x = L->head;
+    while (x != NULL && x->key != key)
+    {
+        x= x->next;
+    }
+    return x;
 }
 
 void list_insert(struct list *L, struct node *x)
 {
-    // TODO
+    x->prev = NULL;
+    x->next= L->head;
+    if (L->head != NULL)
+    {
+        L->head->prev = x;
+    }
+    L->head = x;
 }
 
 void list_delete(struct list *L, struct node *x)
 {
-    // TODO
+    if (x->prev != NULL)
+    {
+        x->prev->next = x->next;
+    }
+    else
+        L->head = x->next;
+
+    if (x->next != NULL)
+    {
+        x->next->prev = x->prev;
+    }
 }
 
 int list_size(struct list *L)

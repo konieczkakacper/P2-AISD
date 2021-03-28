@@ -13,12 +13,10 @@ void treee_insert_biject \
 
 **DONE bst.c:**
 
-**TODO list.c :** \
+**DONE list.c :**\
 struct node *list_search \
 void list_insert \
-void list_delete \
-
-**DONE list.c :**
+void list_delete
 
 **Wymagania na poszczególne oceny:**\
 -3.0: \
