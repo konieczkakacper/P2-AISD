@@ -5,7 +5,6 @@ co-op Robert D.
 
 **TODO bst.c :** \
 
-void tree_insert_biject \
 
 **DONE bst.c:**
 struct node tree_search \
@@ -13,6 +12,7 @@ void tree_insert \
 void transplant \
 struct node tree_minimum \
 void tree_delete \
+void tree_insert_biject \
 
 **DONE list.c :**\
 struct node *list_search \
