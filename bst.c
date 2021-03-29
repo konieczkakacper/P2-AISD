@@ -25,8 +25,16 @@ struct tree
 
 struct node *tree_search(struct tree *T, int key)
 {
-    // TODO
-    return NULL;
+    struct node* x = T->root;
+
+    while ((x != NULL) && (x->key != key))
+    {
+        if(key < x->key)
+            x = x->left;
+        else
+            x = x->right;
+    }
+    return x;
 }
 
 void tree_insert(struct tree *T, struct node *z)

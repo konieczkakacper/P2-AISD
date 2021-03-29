@@ -4,7 +4,7 @@ co-op Robert D.
 **Termin wykonania:** 12.04.2021 00:00
 
 **TODO bst.c :** \
-struct node tree_search \
+
 void tree_insert \
 void transplant \
 struct node tree_minimum \
@@ -12,6 +12,7 @@ void tree_delete \
 void treee_insert_biject \
 
 **DONE bst.c:**
+struct node tree_search \
 
 **DONE list.c :**\
 struct node *list_search \
