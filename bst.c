@@ -39,22 +39,85 @@ struct node *tree_search(struct tree *T, int key)
 
 void tree_insert(struct tree *T, struct node *z)
 {
-    // TODO
+    struct node* y = NULL;
+    struct node* x = T->root;
+
+    while(x != NULL)                   //szukanie miejsca w które należy wstawić węzeł *z
+    {
+        y = x;
+        if(z->key < x->key)
+            x = x->left;
+        else
+            x = x->right;
+    }                               //pod koniec tej iteracji *y wskazuje na węzeł za którym zostanie umieszczony nowy węzeł *z
+
+    z->parent = y;                  //"podłączenie" węzła *z do węzła *y
+    if(y == NULL)
+        T->root = z;
+
+    else if(z->key < y->key)        //podłączenie węzła *y do węzła *z (z prawej lub lewej strony)
+        y->left = z;
+
+    else
+        y->right = z;
 }
 
-void transplant(struct tree *T, struct node *u, struct node *v) {
-    // TODO
+void transplant(struct tree *T, struct node *u, struct node *v)
+{
+    if(u->parent == NULL)
+    {
+        T->root = v;
+    }
+    else if(u == u->parent->left)
+    {
+        u->parent->left = v;
+    }
+    else
+    {
+        u->parent->right = v;
+    }
+
+
+    if(v != NULL)
+    {
+        v->parent = u->parent;
+    }
 }
 
 struct node *tree_minimum(struct node *x)
 {
-    // TODO
-    return NULL;
+    while(x->left != NULL)
+    {
+        x = x->left;
+    }
+    return x;
 }
 
 void tree_delete(struct tree *T, struct node *z)
 {
-    // TODO
+    if(z->left == NULL)
+    {
+        transplant(T, z, z->right);
+    }
+    else if(z->right == NULL)
+    {
+        transplant(T, z, z->left);
+    }
+    else
+    {
+        struct node* y = tree_minimum(z->right);
+
+        if(y->parent != z)
+        {
+            transplant(T, y, y->right);
+            y->right = z->right;
+            y->right->parent = y;
+        }
+
+        transplant(T, z, y);
+        y->left = z->left;
+        y->left->parent = y;
+    }
 }
 
 int tree_size(struct node *x)
@@ -140,7 +203,22 @@ void insert_random(struct tree *T, int *A, int n)
 
 void tree_insert_biject(struct tree *T, int *A, int p, int r)
 {
-    // TODO
+    if(p == r)
+    {
+        tree_insert(T, A[p]);                      //TODO - przy tym jest warning i program (najprawdopodobniej z tego powodu) nie chce się kompilować
+    }
+    else if(r - p == 1)
+    {
+        tree_insert(T, A[p]);
+        tree_insert(T, A[r]);
+    }
+    else
+    {
+        int q = p + ((r - p) /2);
+        tree_insert(T, A[q]);
+        tree_insert_biject(T, A, p, q-1);
+        tree_insert_biject(T, A, q+1, r);
+    }
 }
 
 int int_compare(const void *va, const void *vb)
