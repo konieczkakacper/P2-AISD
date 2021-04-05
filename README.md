@@ -3,9 +3,6 @@ co-op Robert D.
 
 **Termin wykonania:** 12.04.2021 00:00
 
-**TODO bst.c :** \
-
-
 **DONE bst.c:**
 struct node tree_search \
 void tree_insert \
