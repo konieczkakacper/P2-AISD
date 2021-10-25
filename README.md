@@ -1,8 +1,6 @@
 # Projekt-2-AiSD
 co-op Robert D.
 
-**Termin wykonania:** 12.04.2021 00:00
-
 **DONE bst.c:**
 struct node tree_search \
 void tree_insert \
