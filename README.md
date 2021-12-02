@@ -1,4 +1,4 @@
-# Projekt-2-AiSD
+# P2AISD
 co-op Robert D.
 
 **DONE bst.c:**
